@@ -16,5 +16,6 @@ export type KanbanTaskCommentModel = {
     taskId: string;
     author: string;
     content: string;
+    isEdited: boolean;
     timestamp: Date;
 };

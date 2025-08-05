@@ -1,9 +1,5 @@
 import { produce } from "immer";
-import type {
-    KanbanColumnModel,
-    KanbanTaskCommentModel,
-    KanbanTaskModel,
-} from "@kanbanio/stores/kanban/kanbanTypes.ts";
+import type { KanbanColumnModel, KanbanTaskModel } from "@kanbanio/stores/kanban/kanbanTypes.ts";
 import { type State, useKanbanStore } from "@kanbanio/stores/kanban/kanbanStore.ts";
 
 // --- COLUMN ACTIONS ---
@@ -176,10 +172,29 @@ export const removeTask = (taskId: string) => {
 };
 
 // --- COMMENTS ACTIONS ---
-export const addComment = (comment: KanbanTaskCommentModel) => {
+
+export const addComment = (taskId: string, content: string) => {
+    const commentId = crypto.randomUUID();
+
     useKanbanStore.setState(
         produce((state: State) => {
-            state.commentsMap[comment.id] = comment;
+            state.commentsMap[commentId] = {
+                id: commentId,
+                isEdited: false,
+                content,
+                author: "Boar",
+                taskId,
+                timestamp: new Date(),
+            };
+        })
+    );
+};
+
+export const editComment = (commentId: string, updatedContent: string) => {
+    useKanbanStore.setState(
+        produce((state: State) => {
+            state.commentsMap[commentId].content = updatedContent;
+            state.commentsMap[commentId].isEdited = true;
         })
     );
 };
@@ -188,6 +203,24 @@ export const removeComment = (commentId: string) => {
     useKanbanStore.setState(
         produce((state: State) => {
             delete state.commentsMap[commentId];
+        })
+    );
+};
+
+// --- TASK MODAL ACTIONS ---
+
+export const selectTask = (taskId: string) => {
+    useKanbanStore.setState(
+        produce((state: State) => {
+            state.selectedTaskId = taskId;
+        })
+    );
+};
+
+export const deselectTask = () => {
+    useKanbanStore.setState(
+        produce((state: State) => {
+            state.selectedTaskId = null;
         })
     );
 };

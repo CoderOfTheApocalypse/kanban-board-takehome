@@ -11,8 +11,8 @@ export const Button = ({
     ...buttonProps
 }: ButtonProps): React.JSX.Element => (
     <button
-        className={`align-center flex w-fit min-w-fit cursor-pointer flex-row justify-center gap-2 rounded-md border p-2
-            whitespace-nowrap text-black dark:text-white ${className}`}
+        className={`align-center flex w-fit min-w-fit cursor-pointer flex-row justify-center gap-2 rounded-md border p-1
+            ${className}`}
         {...buttonProps}
     >
         {iconPosition === "start" && icon}

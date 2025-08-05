@@ -1,20 +1,36 @@
-type DraggingDTO = {
-    [key: string]: string | null;
+export type DraggingDTO = {
+    [key: string]: string;
 };
 
-const DATA_PARSING_REGEX: RegExp = /^custom-type#([^#]+)#(.+)$/;
-const composeKey = (key: string, value: string | null): string => `custom-type#${key}#${value}`;
+/**
+ * In dragover, dragenter, dragleave events dataTransfer object we have access only to transferring data types and not to
+ * the actual values (see DragAndDrop API Spec).
+ *
+ * We can hack it with setting values into type names and extracting it by parsing type composed key.
+ *
+ * IMPORTANT: It works only if the key is LOWERCASE.
+ */
 
+const DATA_PARSING_REGEX: RegExp = /^custom-type#([^#]+)#(.+)$/;
+const composeKey = (key: string, value: string): string => `custom-type#${key}#${value}`;
+
+/**
+ * Attaches transferring data to DragEvent dataTransfer types.
+ *
+ * @param e {React.DragEvent} - event to attach data to
+ * @param data - generic data, that should be attached to event
+ */
 export const attachDraggingInfo = <Data extends DraggingDTO>(e: React.DragEvent, data: Data) => {
     for (const [key, value] of Object.entries(data)) {
-        // In dragover, dragenter, dragleave events we have access only to types, not to values (HTML DnD API Spec),
-        // so this way we can hack it to access values when needed via custom types.
-        //
-        // It works with keys ONLY IN LOWER CASE.
         e.dataTransfer.setData(composeKey(key, value), value ?? "");
     }
 };
 
+/**
+ * Retrieves transferring data attached to DragEvent via data types.
+ *
+ * @param e {React.DragEvent} - event with attached data in dataTransfer object types
+ */
 export const getDraggingInfo = <Data extends DraggingDTO>(e: React.DragEvent): Data => {
     const draggingInfo: DraggingDTO = {};
 

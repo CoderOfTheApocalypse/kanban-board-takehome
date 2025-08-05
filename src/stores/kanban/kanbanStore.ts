@@ -12,6 +12,8 @@ export type State = {
     columnsMap: Record<string, KanbanColumnModel>;
     tasksMap: Record<string, KanbanTaskModel>;
     commentsMap: Record<string, KanbanTaskCommentModel>;
+
+    selectedTaskId: string | null;
 };
 
 const INITIAL_STORE_STATE: State = {
@@ -42,8 +44,9 @@ const INITIAL_STORE_STATE: State = {
             description: "You have to complete me, brother! It is indeed the time for that!",
         },
     },
-
     commentsMap: {},
+
+    selectedTaskId: null,
 };
 
 export const useKanbanStore = create<State>()(
