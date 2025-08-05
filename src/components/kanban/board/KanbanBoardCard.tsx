@@ -46,8 +46,8 @@ export const KanbanBoardCard = memo(({ id }: KanbanBoardCardProps): React.JSX.El
                 entityType="card"
                 sortingDirection="vertical"
                 wrapperStyles="rounded-xl my-2 flex flex-col gap-2"
-                elementStyles="flex gap-2 h-[120px] min-h-[120px] w-full flex-col rounded-xl border border-zinc-300 bg-neutral-50 p-2.5
-                dark:border-zinc-500 dark:bg-zinc-900"
+                elementStyles="flex gap-2 h-[120px] min-h-[120px] w-full flex-col rounded-xl border border-zinc-300 bg-white p-2.5
+                dark:border-zinc-500 dark:bg-zinc-900 hover:border-indigo-600 dark:hover:border-amber-600 hover:border-2"
                 onDrop={handleDrop}
             >
                 <a className="flex h-full w-full cursor-pointer flex-col text-left" onClick={handleClick}>
@@ -60,7 +60,7 @@ export const KanbanBoardCard = memo(({ id }: KanbanBoardCardProps): React.JSX.El
                         />
 
                         <Button
-                            className="self-center border-0 hover:bg-zinc-200 dark:hover:bg-zinc-800 p-2"
+                            className="self-center border-none hover:bg-zinc-200 dark:hover:bg-zinc-800 p-2"
                             icon={<Trash size={20} />}
                             onClick={handleDelete}
                         />

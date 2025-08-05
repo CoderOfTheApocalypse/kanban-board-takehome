@@ -41,13 +41,13 @@ export const TaskComment = memo(({ id, author, className, isEdited, content, tim
 
                 <div className="flex flex-row gap-1">
                     <Button
-                        className="self-center border-0 p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                        className="self-center border-none p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700"
                         icon={<Pencil size={20} />}
                         onClick={handleToggleEditComment}
                     />
 
                     <Button
-                        className="self-center border-0 p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                        className="self-center border-none p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700"
                         icon={<TrashIcon size={20} />}
                         onClick={handleRemoveComment}
                     />

@@ -48,7 +48,7 @@ export const KanbanBoardColumn = memo(({ id, ref }: KanbanBoardColumnProps) => {
     return (
         <li
             ref={ref as RefObject<HTMLLIElement>}
-            className="flex w-[300px] shrink-0 snap-center flex-col gap-4 overflow-hidden rounded-2xl bg-white py-4
+            className="flex w-[300px] shrink-0 snap-center flex-col gap-4 overflow-hidden rounded-2xl bg-zinc-100 py-4
                 dark:bg-zinc-800"
         >
             <div className="flex flex-col gap-4 px-4">
@@ -67,10 +67,10 @@ export const KanbanBoardColumn = memo(({ id, ref }: KanbanBoardColumnProps) => {
                     />
                 </div>
 
-                <hr className="my-2 w-full border-zinc-400 dark:border-zinc-300" />
+                <hr className="my-2 w-full border border-zinc-400 dark:border-zinc-300" />
 
                 <Button
-                    className="w-full p-2 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                    className="w-full p-2 border-indigo-600 dark:border-amber-600 text-indigo-600 dark:text-amber-600 bg-white dark:bg-zinc-900 hover:bg-indigo-100 dark:hover:bg-zinc-700"
                     icon={<Plus />}
                     onClick={handleAddTask}
                 >

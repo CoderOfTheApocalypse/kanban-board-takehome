@@ -31,12 +31,12 @@ export const TaskDetails = ({ taskDetails, onEdit, className }: TaskDetailsProps
                     Description
                 </div>
 
-                <Button className="border-0 hover:bg-zinc-200 dark:hover:bg-zinc-700" icon={<Pencil size={20} />} onClick={handleDetailsEditToggle} />
+                <Button className="border-none hover:bg-zinc-200 dark:hover:bg-zinc-700" icon={<Pencil size={20} />} onClick={handleDetailsEditToggle} />
             </div>
 
             <EditableTextArea
                 ref={descriptionTextAreaRef}
-                wrapperStyles="h-full overflow-y-auto"
+                wrapperStyles="h-full md:overflow-y-auto"
                 value={taskDetails.description}
                 onEdit={handleUpdateDescription}
             />

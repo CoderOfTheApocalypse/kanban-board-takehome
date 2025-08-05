@@ -42,10 +42,6 @@ export const Dropzone = ({ catchingType, onDrop, className, wrapperStyles }: Dro
     };
     const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
-        setIsReceiving(false);
-
-        console.log("SET FALSE BITCH");
-        setGlobalDragging(false);
 
         const { id, type } = getDraggingInfo<DraggingEventData<DraggingEntityType>>(e);
         if (catchingType === type) {
@@ -53,6 +49,9 @@ export const Dropzone = ({ catchingType, onDrop, className, wrapperStyles }: Dro
         }
 
         e.dataTransfer.clearData();
+
+        setGlobalDragging(false);
+        setIsReceiving(false);
     };
 
     // --- RENDER ---

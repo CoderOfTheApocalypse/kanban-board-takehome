@@ -41,17 +41,16 @@ export const DragAndDropItem = memo(
         const handleDragStart = (e: React.DragEvent<HTMLElement>) => {
             attachDraggingInfo<DraggingEventData<DraggingEntityType>>(e, { id: entityId, type: entityType });
 
-            setIsDragging(true);
             setGlobalDragging(true);
+            setIsDragging(true);
         };
 
         const handleDragEnd = (e: React.DragEvent<HTMLElement>) => {
             e.dataTransfer.clearData();
 
+            setGlobalDragging(false);
             setIsDragging(false);
             setIsDraggedAway(false);
-            console.log("SET FALSE BITCH");
-            setGlobalDragging(false);
         };
 
         // --- DROPZONE CALLBACKS ---
@@ -96,15 +95,15 @@ export const DragAndDropItem = memo(
         const handleDrop = (e: React.DragEvent<HTMLElement>) => {
             e.preventDefault();
 
-            setIsReceiving(false);
-            setIsDraggedAway(false);
-            setInsertionPosition(null);
-
             const { id: sourceId } = getDraggingInfo<DraggingEventData<DraggingEntityType>>(e);
-
             if (sourceId !== entityId) {
                 onDrop(sourceId, entityId, insertionPosition ?? "after");
             }
+
+            setGlobalDragging(false);
+            setIsReceiving(false);
+            setIsDraggedAway(false);
+            setInsertionPosition(null);
 
             e.dataTransfer.clearData();
         };

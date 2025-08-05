@@ -38,7 +38,7 @@ export const KanbanBoard = (props: React.HTMLAttributes<HTMLDivElement>): React.
                 ))}
 
                 <Button
-                    className="mt-5 snap-center self-start bg-white p-2 hover:bg-zinc-200 dark:bg-zinc-800
+                    className="mt-5 snap-center self-start bg-white p-2 border-2 border-indigo-600 dark:border-amber-600 text-indigo-600 dark:text-amber-600 hover:bg-indigo-100  dark:bg-zinc-800
                         dark:hover:bg-zinc-700"
                     icon={<Plus className="self-center" size={20} />}
                     onClick={handleCreateColumn}

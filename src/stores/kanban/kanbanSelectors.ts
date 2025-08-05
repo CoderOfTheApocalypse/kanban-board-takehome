@@ -15,7 +15,7 @@ export const useSelectedTaskComments = () => {
     const commentsMap = useKanbanStore((state) => state.commentsMap);
 
     return useMemo(
-        () => Object.values(commentsMap).filter((comment) => comment.id === selectedTaskId),
+        () => Object.values(commentsMap).filter((comment) => comment.taskId === selectedTaskId),
         [selectedTaskId, commentsMap]
     );
 };

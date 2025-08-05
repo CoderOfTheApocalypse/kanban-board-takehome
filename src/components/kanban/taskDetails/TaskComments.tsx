@@ -50,7 +50,7 @@ export const TaskComments = ({ taskId, className }: TaskCommentsProps) => {
             <div className="w-full">
                 <TextareaAutosize
                     ref={commentInputRef}
-                    className="w-full grow resize-none rounded-xl bg-white p-2 hover:bg-zinc-200 dark:bg-zinc-800
+                    className="w-full grow resize-none rounded-md border border-zinc-200 bg-white p-2 hover:border-zinc-400 dark:bg-zinc-800
                         hover:dark:bg-zinc-700"
                     placeholder="Write a comment..."
                     onKeyDown={handleCommentInputKeyDown}
@@ -58,7 +58,7 @@ export const TaskComments = ({ taskId, className }: TaskCommentsProps) => {
             </div>
 
             {!!taskComments.length && (
-                <ol className="flex flex-col gap-4 overflow-y-auto">
+                <ol className="flex flex-col gap-4 md:overflow-y-auto">
                     {taskComments?.map((comment) => (
                         <TaskComment
                             key={comment.id}

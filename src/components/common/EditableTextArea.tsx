@@ -31,7 +31,7 @@ export const EditableTextArea = ({
 
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-    // Ref
+    // --- REFERENCE EXPOSURE ---
 
     useImperativeHandle(
         ref,
@@ -65,7 +65,6 @@ export const EditableTextArea = ({
     };
 
     const handleSave = () => {
-        console.log("save!");
         onEdit(draft);
         setIsEditing(false);
         textAreaRef.current?.blur();
@@ -91,15 +90,15 @@ export const EditableTextArea = ({
 
                     <div className="flex flex-row justify-end gap-2">
                         <Button
-                            className="border-0 bg-transparent px-2 py-1 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                            className="border-none bg-transparent px-2 py-1 hover:bg-zinc-200 dark:hover:bg-zinc-700"
                             onClick={handleReset}
                         >
                             Cancel
                         </Button>
 
                         <Button
-                            className="border-blue-700 bg-blue-400 px-2 py-1 text-black hover:bg-blue-300
-                                dark:bg-blue-400 dark:text-black dark:hover:bg-blue-300"
+                            className="border-2 border-indigo-700 bg-indigo-400 px-2 py-1 text-black hover:bg-indigo-300
+                                dark:bg-indigo-400 dark:text-black dark:hover:bg-indigo-300"
                             onClick={handleSave}
                         >
                             Save

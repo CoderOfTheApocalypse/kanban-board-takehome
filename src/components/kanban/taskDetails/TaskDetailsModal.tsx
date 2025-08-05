@@ -34,15 +34,15 @@ export const TaskDetailsModal = memo(() => {
                         />
 
                         <Button
-                            className="self-center border-0 hover:bg-zinc-200 dark:hover:bg-zinc-700 p-2"
+                            className="self-center border-none hover:bg-zinc-200 dark:hover:bg-zinc-700 p-2"
                             icon={<X size={20} />}
                             onClick={deselectTask}
                         />
                     </div>
 
                     {/* Task body */}
-                    <div className="flex max-h-[80vh] h-full flex-col items-stretch gap-6 overflow-y-hidden md:flex-row">
-                        <div className="rounded-md bg-zinc-50/25 p-2 md:basis-7/12 dark:bg-zinc-900">
+                    <div className="flex h-full flex-col items-stretch gap-6 overflow-y-auto md:overflow-y-hidden md:flex-row">
+                        <div className="rounded-md bg-zinc-50/75 p-2 md:basis-7/12 dark:bg-zinc-900">
                             <TaskDetails
                                 className="max-h-full"
                                 taskDetails={taskDetails}
@@ -53,7 +53,7 @@ export const TaskDetailsModal = memo(() => {
                         {/* Comments */}
                         <TaskComments
                             taskId={taskDetails.id}
-                            className="rounded-md bg-zinc-50/25 p-2 md:basis-5/12 dark:bg-zinc-900"
+                            className="rounded-md bg-zinc-50/75 p-2 md:basis-5/12 dark:bg-zinc-900"
                         />
                     </div>
                 </div>
